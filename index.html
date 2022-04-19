@@ -101,31 +101,48 @@
       </div>
     </div>
 
-     <!-- Модальное окно Добавить абонента-->
+     <!-- Модальное окно редактировать абонента-->
      <div class="modal" tabindex="-1" id="editModal">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Редактировать абонента</h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <div>
-                <p>Введите Ф.И.О.</p>
-                <input class="form-control" id="edit-name" />
-              </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" id="save-edit">Сохранить</button>
-            </div>
-            
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Редактировать абонента</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
           </div>
+          <div class="modal-body">
+            <div>
+              <p>Введите Ф.И.О.</p>
+              <input class="form-control" id="edit-name" />
+            </div>
+            <div>
+              <p>Введите адрес</p>
+              <input class="form-control" id="edit-street"/>
+            </div>
+            <div>
+              <p>Введите дом</p>
+              <input class="form-control" id="edit-home"/>
+            </div>
+            <div>
+              <p>Введите номер квартиры</p>
+              <input class="form-control" id="edit-room"/>
+            </div>
+            <div>
+              <p>Примечание.</p>
+              <textarea class="form-control" id="edit-comment"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="edit-save">Сохранить</button>
+          </div>
+          
         </div>
       </div>
+    </div>
     <script src="./js/tel.js"></script>
   </body>
 </html>

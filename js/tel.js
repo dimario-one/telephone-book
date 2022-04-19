@@ -8,8 +8,9 @@ let name= document.getElementById("name");
 let room= document.getElementById("room");
 let comment= document.getElementById("comment");
 let saveBtn= document.getElementById("save");
-let saveEditName =document.getElementById("save-edit");
+let saveEditName =document.getElementById("edit-save");
 let editName=document.getElementById("edit-name");
+let allCell=document.querySelectorAll("findCell");
 let ID;
 
 // Для проверки логики страницы 
@@ -61,36 +62,35 @@ function showTable(array) {
         let row_cell_4 = document.createElement("td");
         let row_cell_5 = document.createElement("td");
         let row_cell_6 = document.createElement("td");
-        let row_cell_7 = document.createElement("td");
-        let row_cell_8 = document.createElement("td");
+     
         let deleteBtn = document.createElement("button");
 
         // Заполнение идет рядами так что это порядковый номер.
         row_cell.innerHTML = `${i + 1}`;
-        row_cell.classList.add("cell", "cell_min");
+        row_cell.classList.add("cell", "cell_min","findCell");
         row_cell.setAttribute("id", `number-row-${i}-cell`);
         // Заполняем таблицу
         data = array[i];
         // Запоняем ячейки имя
         row_cell_1.innerHTML = `${data.name}`;
-        row_cell_1.classList.add("cell", "cell_big");
+        row_cell_1.classList.add("cell", "cell_big","findCell");
         row_cell_1.setAttribute("id", `name-row-${i}-cell`);
         // Запоняем ячейки улица
         row_cell_2.innerHTML = `${data.street}`;
-        row_cell_2.classList.add("cell", "cell_big");
+        row_cell_2.classList.add("cell", "cell_big","findCell");
         row_cell_2.setAttribute("id", `street-row-${i}-cell`);
 
         // Заполняем ячейку дом
         row_cell_3.innerHTML = `${data.home}`;
-        row_cell_3.classList.add("cell");
+        row_cell_3.classList.add("cell","findCell");
         row_cell_3.setAttribute("id", `home-row-${i}-cell`);
         // Заполняем ячейку квартира
         row_cell_4.innerHTML = `${data.room}`;
-        row_cell_4.classList.add("cell","cell_big");
+        row_cell_4.classList.add("cell","cell_big","findCell");
         row_cell_4.setAttribute("id", `room-row-${i}-cell`);
         // Заполняем ячейку Примечания
         row_cell_5.innerHTML = `${data.comment}`;
-        row_cell_5.classList.add("cell");
+        row_cell_5.classList.add("cell","findCell");
         row_cell_5.setAttribute("id", `comment-row-${i}-cell`);
         
         // Заполняем ячейку delete
@@ -149,8 +149,20 @@ table.innerHTML = "";
 
 // 
 function  saveEditNameFunc(id){
-    let elem = document.getElementById(`${id}`);
-    editName.value=elem.innerHTML;
+    let cell;
+    let arr;
+    let newArr;
+elem=id.split("-");
+for(i=0;i<allCell.length;i++){
+    cell= allCell[i].getAttribute("id");
+   arr = cell.split("-");
+   if(elem[1]===arr[1] && elem[2]===arr[2]){
+       newArr.push(allCell[i]);
+   }
+}
+
+    // let elem = document.getElementById(`${id}`);
+    // editName.value=elem.innerHTML;
 }
 
 showTable(array);
@@ -171,20 +183,6 @@ saveBtn.addEventListener('click', function() {
 btn.addEventListener('click', function() {
     modal.show();
   });
-
-// document.addEventListener("click", function(event) {
-//     let td = event.target.closest("td");
-//     if (!td) {
-//         return;
-//     } else {
-//         let id = td.getAttribute("id");
-//         let type = id.split("-");
-//         let name = type[0];
-//             if (name === "cellDeleteButton") {
-//                 deleteRow(type[2]);
-//             }
-//         }
-//     });
 
 document.addEventListener("click", function(event) {
     let td = event.target.closest("td");
