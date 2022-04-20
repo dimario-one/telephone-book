@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 let table = document.querySelector("#table tbody");
 let btn = document.getElementById("button");
 let modal = new bootstrap.Modal(document.querySelector('#basicModal'));
@@ -11,34 +12,43 @@ let saveBtn= document.getElementById("save");
 let saveEditName =document.getElementById("edit-save");
 let editName=document.getElementById("edit-name");
 let allCell=document.querySelectorAll("findCell");
+let findModal = document.getElementById("findModal");
+let find = document.getElementById("find");
+let findSave = document.getElementById("find-save");
+
 let ID;
 
 // Для проверки логики страницы 
 let array = [{
+    "id":uuidv4(),
     "name": "Иванов Иван Иванович",
     "street": "пр.Королева",
     "home": 5,
     "room": 14,
     "comment": "не забыть выслать платежку",
 },{
+    "id":uuidv4(),
     "name": "Петров Иван Петрович",
     "street": "пр.Мира",
     "home": 7,
     "room": 20,
     "comment": "не забыть выслать платежку",
 },{
+    "id":uuidv4(),
     "name": "Сидоров Иван Васильевич",
     "street": "пр.Культуры",
     "home": 14,
     "room": 18,
     "comment": "не забыть выслать платежку",
 },{
+    "id":uuidv4(),
     "name": "Краснов Иван Иванович",
     "street": "ул. Красный Путь",
     "home": 15,
     "room": 114,
     "comment": "не забыть выслать платежку",
 },{
+    "id":uuidv4(),
     "name": "Лаптев Иван Радионович",
     "street": "ул.70 лет Октября",
     "home": 5,
@@ -160,13 +170,12 @@ for(i=0;i<allCell.length;i++){
        newArr.push(allCell[i]);
    }
 }
-
-    // let elem = document.getElementById(`${id}`);
-    // editName.value=elem.innerHTML;
 }
 
 showTable(array);
 // Слушатель 
+
+find.addEventListener("click",()=>{ findModal.show();});
 
 saveEditName.addEventListener('click', function() {
     let elem = document.getElementById(`${ID}`);
